@@ -37,3 +37,35 @@ function UserList() {
     e.target.reset();
   };
 
+  // bonusi
+  const filtered = users
+    .filter(
+      (u) =>
+        u.name.toLowerCase().includes(search.toLowerCase()) ||
+        u.email.toLowerCase().includes(search.toLowerCase())
+    )
+    .sort((a, b) => {
+      let valA, valB;
+      if (sortKey === "name") {
+        valA = a.name;
+        valB = b.name;
+      } else if (sortKey === "email") {
+        valA = a.email;
+        valB = b.email;
+      } else if (sortKey === "company") {
+        valA = a.company?.name || "";
+        valB = b.company?.name || "";
+      }
+
+      if (sortOrder === "asc") {
+        return valA.localeCompare(valB);
+      } else {
+        return valB.localeCompare(valA);
+      }
+    });
+
+  return (
+    <div style={{ padding: "20px" }}>
+      <h2>Lista e User-ave</h2>
+
+      
