@@ -101,3 +101,48 @@ function UserList() {
           {sortOrder === "asc" ? "▲ Asc" : "▼ Desc"}
         </button>
       </div>
+
+    
+      <div style={{ overflowX: "auto" }}>
+        <table
+          style={{
+            width: "100%",
+            borderCollapse: "collapse",
+            textAlign: "left",
+          }}
+        >
+          <thead>
+            <tr>
+              <th style={{ borderBottom: "1px solid #ccc", padding: "8px" }}>
+                Emri
+              </th>
+              <th style={{ borderBottom: "1px solid #ccc", padding: "8px" }}>
+                Email
+              </th>
+              <th style={{ borderBottom: "1px solid #ccc", padding: "8px" }}>
+                Kompania
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {filtered.map((user) => (
+              <tr key={user.id}>
+                <td style={{ borderBottom: "1px solid #eee", padding: "8px" }}>
+                  <Link to={`/users/${user.id}`}>{user.name}</Link>
+                </td>
+                <td style={{ borderBottom: "1px solid #eee", padding: "8px" }}>
+                  {user.email}
+                </td>
+                <td style={{ borderBottom: "1px solid #eee", padding: "8px" }}>
+                  {user.company?.name}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+export default UserList;
