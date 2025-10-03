@@ -12,3 +12,28 @@ function UserList() {
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
+ //shtimi lokal
+  const handleAddUser = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value.trim();
+    const email = e.target.email.value.trim();
+
+    if (!name || !email) {
+      alert("Emri dhe emaili janë të detyrueshëm!");
+      return;
+    }
+
+    const newUser = {
+      id: Date.now(),
+      name,
+      email,
+      company: { name: "(lokal)" },
+      phone: "",
+      website: "",
+      address: { street: "", city: "" },
+    };
+
+    setUsers([newUser, ...users]);
+    e.target.reset();
+  };
+
