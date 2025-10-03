@@ -69,3 +69,35 @@ function UserList() {
       <h2>Lista e User-ave</h2>
 
       
+      <form onSubmit={handleAddUser} style={{ marginBottom: "10px" }}>
+        <input type="text" name="name" placeholder="Emri" />
+        <input type="email" name="email" placeholder="Email" />
+        <button type="submit">Shto User</button>
+      </form>
+
+      
+      <input
+        type="text"
+        placeholder="Kërko me emër ose email..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        style={{ marginBottom: "10px", display: "block" }}
+      />
+
+
+      <div style={{ marginBottom: "10px" }}>
+        <label>Rendit sipas: </label>
+        <select value={sortKey} onChange={(e) => setSortKey(e.target.value)}>
+          <option value="name">Emri</option>
+          <option value="email">Email</option>
+          <option value="company">Kompania</option>
+        </select>
+        <button
+          type="button"
+          onClick={() =>
+            setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"))
+          }
+        >
+          {sortOrder === "asc" ? "▲ Asc" : "▼ Desc"}
+        </button>
+      </div>
